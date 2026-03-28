@@ -24,3 +24,44 @@ The context of virtual financial assistants in Brazil is marked by an accelerate
 * **Expected Loss Calculation:** Estimation of the financial value at risk if the client becomes delinquent.
 
 * **Explanatory Diagnosis:** Return of a diagnosis in natural language explaining the reasons for the risk classification (High, Medium, or Low).
+
+## About the Dataset: 
+
+The dataset used was the [**Credit Risk Dataset — 50k Loans, 10 Sectors**](https://www.kaggle.com/datasets/sergionefedov/credit-risk-dataset-50k-loans-10-sectors), which is a comprehensive synthetic dataset on credit risk, covering the entire Basel III/IFRS 9 credit risk framework. It was developed for CFA, FRM, and quantitative finance students, as well as machine learning professionals working with credit scoring and risk modeling.
+
+The dataset simulates a corporate loan portfolio from 2015 to 2024, including:
+
+- The COVID-19 shock (2020) — increased defaults, credit rating downgrades
+- Interest rate rising cycle (2022–2023) — increased financing costs, widening spreads
+- Moody's-calibrated transition matrices for rating migration
+- Six macroeconomic stress scenarios, from baseline to severity similar to the global financial crisis and COVID-19.
+
+The main information extracted from the database for training is:
+
+- credit_score: Customer credit score.
+
+- coupon_rate: Interest rate applied.
+
+- leverage & debt_to_equity: Indicators of financial health and indebtedness.
+
+- sector: Sector of activity (Technology, Healthcare, Real Estate, etc.).
+
+- defaulted: Target variable (1 for default, 0 for on-time payment).
+
+All data are fully synthetic, reproducible, and calibrated according to real-world statistical properties.
+
+## Architecture:
+
+```mermaid
+flowchart TD
+    A[User] -->|Message| B[Interface]
+    B --> C[Random Forest Model]
+    C --> D[Database]
+    D --> C
+    C --> E[Validation]
+    E --> F[LLM]
+    F --> H[Answer]
+```
+
+
+
